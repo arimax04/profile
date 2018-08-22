@@ -7,9 +7,36 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <header id="header">
+    	<div id="headerWrap">
+    		<h1><%= image_tag('resort_pic_tennis01_160127.jpg',:width => "242",:height => "100") %></h1>
+    		<nav id="mainnav">
+    			<p id="menuWrap"><a id="menu"><span id="menuBtn"></span></a></p>
+    			<div class="panel">
+    				<ul>
+    					<li><%= link_to "TOP","/" %></li>
+              <li><a href="#sec00">TOP2</a></li>
+    					<li><a href="#sec01">MESSAGE</a></li>
+    					<li><a href="#sec02">GALLERY</a></li>
+    					<li><a href="#sec03">PROJECT</a></li>
+    					<li><a href="#sec04">BRAND</a></li>
+    					<li><a href="#sec05">COMPANY</a></li>
+    				</ul>
+    			</div>
+    		</nav>
+    	</div>
+    </header>
+    <div id="main" style='padding-top:70px;'>
+      <%= yield %>
+    </div>
+    <footer id="footer">
+      エルピラータのサイトはこちら： <%= link_to "elpirata.net","https://f-tpl.com/sample/tpl_093/",:class => "text-primary" %>
+      <br>
+    	Copyright(c) 2016 Sample Inc. All Rights Reserved. Design by <a href="https://f-tpl.com/sample/tpl_093/" target="_blank">http://f-tpl.com</a><!-- ←クレジット表記を外す場合はシリアルキーが必要です http://f-tpl.com/credit/ -->
+    </footer>
+</body>
 </html>

@@ -14,3 +14,28 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+
+$(function(){
+	
+	var
+	  winW = $(window).width(),
+		winH = $(window).height(),
+		nav = $('#mainnav ul a'),
+		curPos = $(this).scrollTop();
+	
+	if (winW > 800){
+		var headerH =0;
+	}
+	else{
+		var headerH =70;
+	}
+	// $('#menu').css('background-color','Red');
+	$('#menu').on('click',function(){
+		$('.panel').slideToggle();
+		$('#menuBtn').toggleClass('close');
+	});
+
+});

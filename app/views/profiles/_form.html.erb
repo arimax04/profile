@@ -1,0 +1,78 @@
+<%= form_with(model: profile, local: true) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :氏名 %>
+    <br>
+    <%= form.text_field :name ,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :年齢 %>
+    <br>
+    <%= form.number_field :age ,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :大学名 %>
+    <br>
+    <%= form.radio_button :univ,"東京大学" ,class:"form-controll"%> 東京大学
+    <%= form.radio_button :univ,"お茶の水女子大学" ,class:"form-controll"%> お茶の水女子大学
+    <%= form.radio_button :univ,"聖心女子大学" ,class:"form-controll"%> 聖心女子大学
+    <%= form.radio_button :univ,"日本女子大学" ,class:"form-controll"%> 日本女子大学
+  </div>
+
+  <div class="field">
+    <%= form.label :最寄駅 %>
+    <br>
+    <%= form.text_field :station ,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :携帯電話 %>
+    <br>
+    <%= form.text_field :phone ,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :出身高校 %>
+    <br>
+    <%= form.text_field :highschool ,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :補足 %>
+    <br>
+    <%= form.text_area :supplement ,class:"form-controll supplement"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit(class:'btn btn-primary') %>
+  </div>
+<% end %>
+
+<script>
+var textarea=$('textarea'+'.supplement');
+textarea.height(30);
+textarea.css("lineHeight","20px");
+textarea.on("input",function(evt){
+  if(evt.target.scrollHeight > evt.target.offsetHeight){
+    $(evt.target).height(evt.target.scrollHeight);
+  }else{
+    var lineHeight=Number($(evt.target).height() - lineHeight);
+    if(evt.target.scrollHeight > evt.target.offsetHeight){
+      $(evt.target).height(evt.target.scrollHeight);
+    }
+  }
+});
+</script>

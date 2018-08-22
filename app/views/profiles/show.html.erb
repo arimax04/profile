@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>氏名:</strong>
+  <%= @profile.name %>
+</p>
+<p>
+  <strong>年齢:</strong>
+  <%= @profile.age %>
+</p>
+
+<p>
+  <strong>大学:</strong>
+  <%= @profile.univ %>
+</p>
+
+<p>
+  <strong>最寄駅:</strong>
+  <%= @profile.station %>
+</p>
+
+<p>
+  <strong>携帯電話:</strong>
+  <%= @profile.phone %>
+</p>
+
+<p>
+  <strong>出身高校:</strong>
+  <%= @profile.highschool %>
+</p>
+
+<p>
+  <strong>補足:</strong>
+  <%= @profile.supplement %>
+</p>
+
+<%= link_to '編集', edit_profile_path(@profile) %> |
+<%= link_to 'TOPに戻る', profiles_path %>

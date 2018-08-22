@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+エルピラータ勧誘期に作ってみたプロフ入力サイトだよ
 
-Things you may want to cover:
+改善案
+・データベースには大学全部突っ込んじゃっていいか
+カラムで識別する感じ
+・補足は行で分けてどんどん追加していくほうがいいかも
 
-* Ruby version
+右上のボタン当たり判定小さい
 
-* System dependencies
+検索画面作る
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+大学名で分ける
