@@ -21,6 +21,10 @@ class ProfilesController < ApplicationController
   def edit
   end
 
+  def search
+    @profile = Profile.all
+  end
+
   # POST /profiles
   # POST /profiles.json
   def create
