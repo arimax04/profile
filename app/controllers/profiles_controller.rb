@@ -22,7 +22,11 @@ class ProfilesController < ApplicationController
   end
 
   def search
-    @profile = Profile.all
+    search_action_with_ajax unless params[:ajax_handler].blank?
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # POST /profiles
@@ -74,5 +78,27 @@ class ProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
       params.require(:profile).permit(:name, :age, :univ, :station, :phone, :highschool, :supplement)
+    end
+
+    def search_action_with_ajax
+      if params[:ajax_handler] == 'search'
+        query = []
+        if params["name"].present?
+          query.push("name like '#{params[:name]}'")
+        end
+        if params["phone"].present?
+          query.push("phone like '#{params[:phone]}'")
+        end
+        if params["univ"].present?
+          query.push("univ like '#{params[:univ]}'")
+        end
+        if params["highscool"].present?
+          query.push("highschool like '#{params[:highschool]}'")
+        end
+        if !query.empty?
+          print(query)
+          @members = Profile.where(query.join(" or "))
+        end
+      end
     end
 end

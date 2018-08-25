@@ -1,3 +1,26 @@
-<%
+<%= form_tag('/profiles/search', :remote => true,:method => "post") do %>
+<%= label_tag :名前　%>
+<br>
+<%= text_field_tag :name %>
+<br>
+<%= label_tag :電話番号　%>
+<br>
+<%= text_field_tag :phone %>
+<br>
+<%= label_tag :大学　%>
+<br>
+<%= text_field_tag :univ %>
+<br>
+<%= label_tag :出身高校　%>
+<br>
+<%= text_field_tag :highschool %>
+<br>
+<%= hidden_field_tag :ajax_handler,'search' %>
+<%= submit_tag "検索" %>
+<% end %>
+<br>
+<div style="text-align:center;">検索結果は下に出るよ</div>
+<hr>
 
-%>
+<div id="search_result">
+</div>

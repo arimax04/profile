@@ -1,0 +1,5 @@
+<% if @members.present? %>
+  $("#search_result").html(`<%= render 'registeredshow', profiles: @members%>`);
+<% else %>
+  $("#search_result").html("検索結果なし");
+<% end %>
