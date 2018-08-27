@@ -1,9 +1,10 @@
-<h1 stype='text-align=center;'>新規登録</h1>
+<h1 style='text-align=center;'>新規登録</h1>
+
 <br>
 <%= render 'form', event: @event %>
 <br>
 <div style='text-align:center;'>
-<%= link_to '戻る', "/profiles/event" %>
+<%= link_to 'イベント画面に戻る', events_path %>
 </div>
 
 <% if @events.present?

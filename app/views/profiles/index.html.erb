@@ -1,3 +1,20 @@
+<pre>
+  やるべきことリスト
+  ・表示を年度別に分ける
+  ・イベントに新入生のメンバーを追加する
+
+  テーブル構成案
+  まずはテーブルを二つに分ける
+
+  そのうちの一つはイベント参加者テーブル（作成されたイベントの新入生の参加者を入れる
+  (rails g model participant newcomer_id:integer event_id:integer)
+
+  もう片方はイベントテーブルマスタ（作成されたイベントのキー、種類、日程、場所、在学生の参加メンツ、備考を管理
+  (rails g model eventmaster kindof:string date:time place:string participants:text supplement:text)
+  この二つを突合させて（さらにProfileテーブルも突合させて）テーブルを作っていく
+</pre>
+
+
 <p id="notice"><%= notice %></p>
 <br>
 <div class="newregister" style='text-align:center;font-size:200%;'><%= link_to '新規登録', new_profile_path,style:'color:#ffffff',class: 'btn btn-primary' %></div>

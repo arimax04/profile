@@ -18,12 +18,12 @@
       <tr class="info" style="background-color:#00CCFF;">
         <td><%= event.id %></td>
         <td><%= event.kindofevent %></td>
-        <td><%= event.date %></td>
+        <td><%= event.dateofevent %></td>
         <td><%= event.place %></td>
         <td><%= event.created_at.strftime('%Y-%m-%d %H:%M')  %></td>
-        <td><%= link_to '詳細' , "/profiles/event/show/#{event.id}" , class: 'btn btn-primary' ,style:'color:#ffffff' %></td>
-        <td><%= link_to '編集', "/profiles/event/#{event.id}/edit",class: 'btn btn-primary',style:'color:#ffffff' %></td>
-        <td><%= link_to '消去', "/profiles/event/#{event.id}", method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %></td>
+        <td><%= link_to '詳細' , event_path(event) , class: 'btn btn-primary' ,style:'color:#ffffff' %></td>
+        <td><%= link_to '編集', edit_event_path(event),class: 'btn btn-primary',style:'color:#ffffff' %></td>
+        <td><%= link_to '消去', event_path(event), method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %></td>
       </tr>
     <% end %>
   </tbody>

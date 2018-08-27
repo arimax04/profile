@@ -10,13 +10,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-
     if params[:checkedid].present?
       userid = CheckedUser.new({checkedid: params[:checkedid]})
       puts("---------------------#{params[:checkedid]}")
       respond_to do |format|
         if userid.save
-          format.html { redirect_to @profile, notice: '新しく登録されました。' }
+          format.html { redirect_to profiles_path(@profile), notice: '新しく登録されました。' }
           format.json { render :show, status: :created, location: @profile }
         else
           format.html { render :new }
@@ -98,9 +97,16 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def showevents
+    @events = Eventmaster.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
+      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+      puts request.referer
+      puts request.fullpath
       @profile = Profile.find(params[:id])
     end
 

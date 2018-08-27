@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<div style="text-align:center;">
+<%= link_to "イベント新規作成",new_event_path,class:"btn btn-primary",style:"color:#ffffff;" %>
+</div>
+
+
+<pre>
+<%= profiles_path %>
+<%= events_path %>
+ここはあとでお食事会、練習会、公開練で分けられるようにしたい
+まだテーブル構成決まってない涙
+</pre>
+
+<%= render "registeredshow", events:@events %>

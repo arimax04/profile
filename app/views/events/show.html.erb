@@ -11,7 +11,7 @@
   </p>
   <p>
     <strong>開催日時:</strong>
-    <%= @event.date %>
+    <%= @event.dateofevent %>
   </p>
 
 
@@ -31,7 +31,7 @@
   </p>
 
   <br>
-  <%= link_to '編集', "/profiles/#{@event.id}/edit" %> |
-  <%= link_to 'TOPに戻る', "/profiles/event" %>
+  <%= link_to '編集', edit_event_path(@event) %> |
+  <%= link_to 'イベント画面に戻る', events_path %>
   <br>
 </div>
