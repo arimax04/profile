@@ -1,0 +1,32 @@
+<%= form_tag(request.fullpath, :remote => true,:method => "post") do %>
+  <%= label_tag :名前　%>
+  <br>
+  <%= text_field_tag :name %>
+  <br>
+  <%= label_tag :電話番号　%>
+  <br>
+  <%= text_field_tag :phone %>
+  <br>
+  <%= label_tag :大学　%>
+  <br>
+  <%= radio_button_tag :univ,"東京大学" %>東京大学
+  <%= radio_button_tag :univ,"お茶の水女子大学" %>お茶の水女子大学
+  <%= radio_button_tag :univ,"聖心女子大学" %>聖心女子大学
+  <%= radio_button_tag :univ,"日本女子大学" %>日本女子大学
+  <br>
+  <%= label_tag :出身高校　%>
+  <br>
+  <%= text_field_tag :highschool%>
+  <br>
+  <%= hidden_field_tag :ajax_handler,'search' %>
+  <%= submit_tag "検索" %>
+<% end %>
+<br>
+<p id="notice"><%= notice %></p>
+<br>
+<div style="text-align:center;">検索結果は下に出るよ</div>
+<hr>
+
+<div id="search_result">
+  <%= render 'listofnewcomer', profiles:@profiles %>
+</div>

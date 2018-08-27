@@ -97,10 +97,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def showevents
-    @events = Eventmaster.all
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
@@ -119,16 +115,16 @@ class ProfilesController < ApplicationController
       if params[:ajax_handler] == 'search'
         query = []
         if params["name"].present?
-          query.push("name like '#{params[:name]}'")
+          query.push("name like '%#{params[:name]}%'")
         end
         if params["phone"].present?
-          query.push("phone like '#{params[:phone]}'")
+          query.push("phone like '%#{params[:phone]}%'")
         end
         if params["univ"].present?
           query.push("univ like '#{params[:univ]}'")
         end
         if params["highscool"].present?
-          query.push("highschool like '#{params[:highschool]}'")
+          query.push("highschool like '%#{params[:highschool]}%'")
         end
         if !query.empty?
           print(query)

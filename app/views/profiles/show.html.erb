@@ -42,10 +42,10 @@
   <p>
     <%= link_to "お気に入り",profile_path(@profile,params:{checkedid: @profile.id}), class:"btn btn-primary", method: "post" %>
   </p>
-  
+
 
   <br>
-  <%= link_to '編集', edit_profile_path(@profile) %> |
-  <%= link_to 'TOPに戻る', profiles_path %>
+  <%= link_to '編集', edit_profile_path(@profile), class:"btn btn-warning" %> |
+  <%= link_to 'TOPに戻る', profiles_path, class:"btn btn-info" %>
   <br>
 </div>
