@@ -1,0 +1,22 @@
+
+<%= link_to "イベント新規作成","/profiles/event/new",class:"btn btn-primary" %>
+
+
+<pre>
+ここはあとでお食事会、練習会、公開練で分けられるようにしたい
+まだテーブル構成決まってない涙
+</pre>
+
+<pre>
+  ・テーブル構成案
+  まずはテーブルを二つに分ける
+
+  そのうちの一つはイベント参加者テーブル（作成されたイベントの新入生の参加者を入れる
+  (rails g model participant newcomer_id:integer event_id:integer)
+
+  もう片方はイベントテーブルマスタ（作成されたイベントのキー、種類、日程、場所、在学生の参加メンツ、備考を管理
+  (rails g model eventmaster kindof:string date:time place:string participants:text supplement:text)
+  この二つを突合させて（さらにProfileテーブルも突合させて）テーブルを作っていく
+</pre>
+
+<%= render "registeredshow", events:@events %>

@@ -18,14 +18,13 @@
 //= require popper
 //= require bootstrap-sprockets
 
-$(function(){
-	
+$(document).on('turbolinks:load',function(){
 	var
 	  winW = $(window).width(),
 		winH = $(window).height(),
 		nav = $('#mainnav ul a'),
 		curPos = $(this).scrollTop();
-	
+
 	if (winW > 800){
 		var headerH =0;
 	}

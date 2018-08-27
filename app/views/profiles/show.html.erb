@@ -2,6 +2,10 @@
   <p id="notice"><%= notice %></p>
 
   <p>
+  </p>
+  <strong>id:</strong>
+  <%= @profile.id %>
+  <p>
     <strong>氏名:</strong>
     <%= @profile.name %>
   </p>
@@ -35,7 +39,11 @@
     <%= @profile.supplement %>
   </p>
 
+  <p>
+    <%= link_to "お気に入り",profile_path(@profile,params:{checkedid: @profile.id}), class:"btn btn-primary", method: "post" %>
+  </p>
 
+  <br>
   <%= link_to '編集', edit_profile_path(@profile) %> |
   <%= link_to 'TOPに戻る', profiles_path %>
   <br>

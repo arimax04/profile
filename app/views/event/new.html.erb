@@ -1,0 +1,20 @@
+<h1 stype='text-align=center;'>新規登録</h1>
+<br>
+<%= render 'form', event: @event %>
+<br>
+<div style='text-align:center;'>
+<%= link_to '戻る', "/profiles/event" %>
+</div>
+
+<% if @events.present?
+  @events.each do |event| %>
+    <hr>
+    id:<%= event.id %><br>
+    date:<%= event.date %><br>
+    place:<%= event.place %><br>
+    participants<%= event.participants %><br>
+    supplement<%= event.supplement %><br>
+
+  <%end
+end
+%>

@@ -1,0 +1,67 @@
+<%= form_with(model: event,url: "/profiles/event", local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%=event.id%>
+
+  <div class="field">
+    <%= form.label :種類 %>
+    <br>
+    <%= form.radio_button :kindofevent,"公開練" ,class:"form-controll"%> 公開練
+    <%= form.radio_button :kindofevent,"練習会" ,class:"form-controll"%> 練習会
+    <%= form.radio_button :kindofevent,"お食事会" ,class:"form-controll"%> お食事会
+  </div>
+
+  <div class="field">
+    <%= form.label :開催日 %>
+    <br>
+    <%= form.date_field :date,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :開催場所 %>
+    <br>
+    <%= form.text_field :place ,class:"form-controll"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :サークル側の参加者 %>
+    <br>
+    <%= form.text_area :participants ,class:"form-controll supplement"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :補足 %>
+    <br>
+    <%= form.text_area :supplement ,class:"form-controll supplement"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit(class:'btn btn-primary') %>
+  </div>
+<% end %>
+
+<script>
+var textarea=$('textarea'+'.supplement');
+textarea.height(30);
+textarea.css("lineHeight","20px");
+textarea.on("input",function(evt){
+  if(evt.target.scrollHeight > evt.target.offsetHeight){
+    $(evt.target).height(evt.target.scrollHeight);
+  }else{
+    var lineHeight=Number($(evt.target).height() - lineHeight);
+    if(evt.target.scrollHeight > evt.target.offsetHeight){
+      $(evt.target).height(evt.target.scrollHeight);
+    }
+  }
+});
+</script>

@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :氏名 %>
     <br>
     <%= form.text_field :name ,class:"form-controll"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :年齢 %>
     <br>
     <%= form.number_field :age ,class:"form-controll"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :大学名 %>
     <br>
     <%= form.radio_button :univ,"東京大学" ,class:"form-controll"%> 東京大学
@@ -32,31 +32,37 @@
     <%= form.radio_button :univ,"日本女子大学" ,class:"form-controll"%> 日本女子大学
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :最寄駅 %>
     <br>
     <%= form.text_field :station ,class:"form-controll"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :携帯電話 %>
     <br>
     <%= form.text_field :phone ,class:"form-controll"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :出身都道府県 %>
+    <br>
+    <%= form.text_field :province ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
     <%= form.label :出身高校 %>
     <br>
     <%= form.text_field :highschool ,class:"form-controll"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :補足 %>
     <br>
     <%= form.text_area :supplement ,class:"form-controll supplement"%>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= form.submit(class:'btn btn-primary') %>
   </div>
 <% end %>

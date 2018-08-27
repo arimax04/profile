@@ -1,0 +1,18 @@
+<br>
+<div style="text-align:center;">
+  <p id="notice"><%= notice %></p>
+  現在注目されている人達ですよ〜〜〜〜〜〜〜〜〜〜〜
+</div>
+
+<br>
+<%
+if @users.present?
+  %>
+  <%= render 'registeredshow', profiles: @users %>
+<%
+else
+%>
+ 私は今幸せです
+<%
+end
+%>

@@ -1,0 +1,37 @@
+<div style='text-align:center;'>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+  </p>
+  <strong>id:</strong>
+  <%= @event.id %>
+  <p>
+    <strong>種類:</strong>
+    <%= @event.kindofevent %>
+  </p>
+  <p>
+    <strong>開催日時:</strong>
+    <%= @event.date %>
+  </p>
+
+
+  <p>
+    <strong>開催場所:</strong>
+    <%= @event.place %>
+  </p>
+
+  <p>
+    <strong>参加者:</strong>
+    <%= @event.participants %>
+  </p>
+
+  <p>
+    <strong>補足:</strong>
+    <%= @event.supplement %>
+  </p>
+
+  <br>
+  <%= link_to '編集', "/profiles/#{@event.id}/edit" %> |
+  <%= link_to 'TOPに戻る', "/profiles/event" %>
+  <br>
+</div>

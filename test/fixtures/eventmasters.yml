@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kindofevent: MyString
+  date: 2018-08-26 21:42:56
+  place: MyString
+  participants: MyText
+  supplement: MyText
+
+two:
+  kindofevent: MyString
+  date: 2018-08-26 21:42:56
+  place: MyString
+  participants: MyText
+  supplement: MyText

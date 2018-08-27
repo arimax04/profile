@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_023532) do
+ActiveRecord::Schema.define(version: 2018_08_26_124256) do
+
+  create_table "checked_users", force: :cascade do |t|
+    t.integer "checkedid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "eventmasters", force: :cascade do |t|
+    t.string "kindofevent"
+    t.time "date"
+    t.string "place"
+    t.text "participants"
+    t.text "supplement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer "newcomer_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "name"
@@ -23,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_023532) do
     t.text "supplement", limit: 4294967295
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "province"
   end
 
 end

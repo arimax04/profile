@@ -1,0 +1,2 @@
+class Eventmaster < ApplicationRecord
+end

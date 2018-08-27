@@ -3,11 +3,13 @@
 <table class='table table-table-condensed'>
   <thead>
     <tr>
+      <th>id</th>
       <th>氏名</th>
       <th>年齢</th>
       <th>大学</th>
       <th>最寄駅</th>
       <th>携帯電話</th>
+      <th>出身都道府県</th>
       <th>出身高校</th>
       <th>登録日</th>
       <th>オプション</th>
@@ -18,16 +20,25 @@
   <tbody>
     <% profiles.each do |profile| %>
       <tr>
+        <th><%= profile.id %></td>
         <td><%= profile.name %></td>
         <td><%= profile.age %></td>
         <td><%= profile.univ %></td>
         <td><%= profile.station %></td>
         <td><%= profile.phone %></td>
+        <td><%= profile.province %></td>
         <td><%= profile.highschool %></td>
         <td><%= profile.created_at.strftime('%Y-%m-%d %H:%M')  %></td>
         <td><%= link_to '詳細' , profile , class: 'btn btn-primary' ,style:'color:#ffffff' %></td>
         <td><%= link_to '編集', edit_profile_path(profile),class: 'btn btn-primary',style:'color:#ffffff' %></td>
-        <td><%= link_to '消去', profile, method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %></td>
+        <!-- <td><%= link_to '消去', profile, method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %></td> -->
+        <td>
+          <% if request.fullpath == "/profiles/importance" %>
+            <%= link_to '消去', "/profiles/importance/"+"#{profile.checkedid}", method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %>
+          <% else %>
+            <%= link_to '消去', profile, method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

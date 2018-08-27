@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Elpirata</title>
+    <title>勧誘プロフサイト</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,12 +19,12 @@
     			<div class="panel">
     				<ul>
     					<li><%= link_to "TOP",profiles_path %></li>
-              <li><%= profiles_path %> </li>
-              <li><%= link_to( "SEARCH","/profiles/search" )%></li>
-    					<li><a href="#sec01">MESSAGE</a></li>
-    					<li><a href="#sec02">GALLERY</a></li>
-    					<li><a href="#sec03">PROJECT</a></li>
-    					<li><a href="#sec04">BRAND</a></li>
+              <li><%= link_to( "検索","/profiles/search" )%></li>
+    					<li><%= link_to "注目人物","/profiles/importance" %></li>
+              <li><%= link_to "イベント","/profiles/event" %></li>
+    					<li><%= link_to "ELPIRATAホームページ","https://elpirata.net", style: "color:gray", :target=>["_blank"] %></li>
+    					<li><%= link_to "ソースコード見たい人はこちら","https://github.com/arimax04/profile", style: "color:gray", :target=>["_blank"] %></li>
+    					<li><%= link_to "グーグルで検索","https://google.com", style: "color:gray", :target=>["_blank"] %></li>
     					<li><a href="#sec05">COMPANY</a></li>
     				</ul>
     			</div>
