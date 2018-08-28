@@ -17,6 +17,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Eventmaster.new(event_params)
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts @event.dateofevent
     respond_to do |format|
       if @event.save
         format.html { redirect_to event_path(@event), notice: '新しく登録されました。' }
@@ -120,6 +122,7 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:eventmaster).permit(:kindofevent, :dateofevent, :place, :participants, :supplement)
+
     end
 
     def search_action_with_ajax

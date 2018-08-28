@@ -24,7 +24,7 @@
   <div class="field">
     <%= form.label :開催日 %>
     <br>
-    <%= form.datetime_select :dateofevent, use_month_numbers: true, class:"form-controll"%>
+    <%= form.datetime_select :dateofevent, use_month_numbers: true, default:Date.new(Date.today.year, Date.today.month, Date.today.day), class:"form-controll"%>
   </div>
 
   <div class="field">

@@ -1,15 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div style="text-align:center;">
-<%= link_to "イベント新規作成",new_event_path,class:"btn btn-primary",style:"color:#ffffff;" %>
-</div>
+
 
 
 <pre>
-<%= profiles_path %>
-<%= events_path %>
-ここはあとでお食事会、練習会、公開練で分けられるようにしたい
-まだテーブル構成決まってない涙
+簡単な説明
+<hr>
+新規作成で公開練または練習会またはお食事会のイベントが作成できるよ
+作成したイベントには詳細ボタンで新入生を登録できるよ（ただし、TOP画面で登録した新入生のみ選択できる）
 </pre>
+
+<div style="text-align:center;">
+<%= link_to "イベント新規作成",new_event_path,class:"btn btn-primary",style:"color:#ffffff;" %>
+</div>
 
 <%= render "registeredshow", events:@events %>
