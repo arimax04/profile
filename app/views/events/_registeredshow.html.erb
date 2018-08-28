@@ -3,7 +3,6 @@
 <table class='table table-table-condensed'>
   <thead>
     <tr class="info" style="background-color:#FF8080;">
-      <th>id</th>
       <th>種類</th>
       <th>開催日</th>
       <th>開催場所</th>
@@ -16,7 +15,6 @@
   <tbody>
     <% events.each do |event| %>
       <tr class="info" style="background-color:#00CCFF;">
-        <td><%= event.id %></td>
         <td><%= event.kindofevent %></td>
         <td><%= event.dateofevent %></td>
         <td><%= event.place %></td>

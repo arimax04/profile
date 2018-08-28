@@ -1,16 +1,17 @@
 class EventsController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_profile, only: [:show, :edit, :update]
+  before_action :set_cookies
   def index
-    @events = Eventmaster.all
+    age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
+    @events = Eventmaster.where(created_at: age).order('id desc')
   end
   def new
     @event = Eventmaster.new
   end
 
   def show
-    @participants = Participant.where("event_id = #{params[:id]}").pluck(:event_id)
-    @profiles = Profile.find(@participants)
+    @participants = Participant.where(event_id: params[:id]).pluck(:newcomer_id)
+    @profiles = Profile.where(id: @participants)
   end
 
 
@@ -44,10 +45,16 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
+    event = Eventmaster.where(id:params[:id])
     respond_to do |format|
-      format.html { redirect_to events_path, notice: '消去されました。' }
-      format.json { head :no_content }
+      if event.present?
+        event.delete_all
+        format.html { redirect_to events_path, notice: '消去されました。' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to events_path, notice: '既に削除されています' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -56,7 +63,7 @@ class EventsController < ApplicationController
       search_action_with_ajax
 
     else
-      @profiles = Profile.all
+      @profiles = Profile.all.order('id desc')
 
     end
     @participants = Participant.where("event_id = #{params[:id]}").pluck(:newcomer_id)
@@ -70,7 +77,7 @@ class EventsController < ApplicationController
     participant = Participant.new({newcomer_id: params[:profileid],event_id: params[:id]})
     respond_to do |format|
       if participant.save
-        format.html { redirect_to "/profiles/events/#{params[:id]}/addnewtoevent", notice: '新しく登録されました。' }
+        format.html { redirect_to addnewtoevent_event_path(params[:id]), notice: '新しく登録されました。' }
         format.json { render :show, status: :created, location: participant }
       else
         format.html { render :new }
@@ -80,19 +87,33 @@ class EventsController < ApplicationController
   end
 
   def deletenewfromeventprocess
-    participant = Participant.find_by(newcomer_id: params[:profileid])
+    participants = Participant.where(newcomer_id: params[:profileid],event_id: params[:id])
     respond_to do |format|
-      if participant.delete
-        format.html { redirect_to "/profiles/events/#{params[:id]}/addnewtoevent", notice: '登録解除しました。' }
-        format.json { render :show, status: :created, location: participant }
-      else
-        format.html { render :new }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      participants.each do |participant|
+        if participants
+          participant.delete_all
+          format.html { redirect_to addnewtoevent_event_path(params[:id]), notice: '登録解除しました。' }
+          format.json { render :show, status: :created, location: participant }
+        else
+          format.html { redirect_to addnewtoevent_event_path(params[:id]), notice: 'この人は登録削除されています' }
+          format.json { render json: @profile.errors, status: :unprocessable_entity }
+        end
+        break
       end
     end
   end
 
   private
+
+    def set_cookies
+      if params[:age]
+        cookies[:age] = params[:age].to_i
+      elsif cookies[:age] && cookies[:age] != Date.today.year
+      else
+        cookies[:age] = Date.today.year
+      end
+    end
+
     def set_profile
       @event = Eventmaster.find(params[:id])
     end
@@ -118,9 +139,9 @@ class EventsController < ApplicationController
         end
         if !query.empty?
           print(query)
-          @profiles = Profile.where(query.join(" or "))
+          @profiles = Profile.where(query.join(" or ")).order('id desc')
         else
-          @profiles = Profile.all
+          @profiles = Profile.all.order('id desc')
         end
       end
     end

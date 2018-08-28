@@ -1,21 +1,31 @@
 Rails.application.routes.draw do
-
   root :to => "profiles#index"
 
+  scope :profiles do
+    resources :events do
+      member do
+        get "addnewtoevent" => "events#addnewtoevent"
+        post "addnewtoevent" => "events#addnewtoevent"
+        post "addnewtoeventprocess/:profileid" => "events#addnewtoeventprocess", as:"addnewtoeventprocess"
+        post "deletenewfromeventprocess/:profileid" => "events#deletenewfromeventprocess", as:"deletenewfromeventprocess"
+      end
+    end
+  end
 
-  get "profiles/events/:id/addnewtoevent" => "events#addnewtoevent"
-  post "profiles/events/:id/addnewtoevent" => "events#addnewtoevent"
-  post "profiles/events/:id/addnewtoeventprocess/:profileid" => "events#addnewtoeventprocess"
-  post "profiles/events/:id/deletenewfromeventprocess/:profileid" => "events#deletenewfromeventprocess"
-  resources :events, path: '/profiles/events'
+  resources :profiles do
+    collection do
+      get "search", action:"search"
+      post "search", action:"search"
+      get "importance", action:"importance"
 
-  get "profiles/search" => "profiles#search"
-  post "profiles/search" => "profiles#search"
-  get "profiles/importance" => "profiles#importance"
-  post "profiles/importance" => "profiles#importance"
-  post "profiles/:id" => "profiles#show"
-  delete "profiles/importance/:id" => "profiles#delete_importance"
-  resources :profiles
+    end
+    member do
+      post "importance", action:"postimportance"
+      delete "importance", action:"delete_importance"
+    end
+
+  end
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

@@ -40,7 +40,7 @@
   </p>
 
   <p>
-    <%= link_to "お気に入り",profile_path(@profile,params:{checkedid: @profile.id}), class:"btn btn-primary", method: "post" %>
+    <%= link_to "注目人物に登録",importance_profile_path(@profile,params:{checkedid: @profile.id}), class:"btn btn-primary", style:"color:white", method: "post" %>
   </p>
 
 

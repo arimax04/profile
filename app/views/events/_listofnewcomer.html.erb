@@ -18,9 +18,9 @@
         <td><%= profile.univ %></td>
         <td><%= profile.phone %></td>
         <td><% if @participants.include?(profile.id) %>
-          <%= link_to '登録解除' , "/profiles/events/#{params[:id]}/deletenewfromeventprocess/#{profile.id}", class: 'btn btn-warning' ,style:'color:#ffffff', method:"post" %>
+          <%= link_to '登録解除' , deletenewfromeventprocess_event_path(params[:id],profile.id), class: 'btn btn-warning' ,style:'color:#ffffff', method:"post" %>
         <% else %>
-          <%= link_to '登録' , "/profiles/events/#{params[:id]}/addnewtoeventprocess/#{profile.id}", class: 'btn btn-primary' ,style:'color:#ffffff', method:"post" %>
+          <%= link_to '登録' , addnewtoeventprocess_event_path(params[:id],profile.id), class: 'btn btn-primary' ,style:'color:#ffffff', method:"post" %>
         <%end%>
       </td>
       </tr>

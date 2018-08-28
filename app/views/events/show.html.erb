@@ -36,7 +36,7 @@
   <% end %>
   <br>
   <%= link_to '編集', edit_event_path(@event), class:"btn btn-warning", style:"color:#FFFFFF" %> |
-  <%= link_to '新入生をイベントに追加する',"/profiles/events/#{@event.id}/addnewtoevent", class:"btn btn-success", style:"color:#FFFFFF" %> |
+  <%= link_to '新入生をイベントに追加する',addnewtoevent_event_path(@event), class:"btn btn-success", style:"color:#FFFFFF" %> |
   <%= link_to 'イベント画面に戻る', events_path, class:"btn btn-info", style:"color:#FFFFFF" %>
   <br>
 </div>

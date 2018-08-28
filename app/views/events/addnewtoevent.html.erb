@@ -1,3 +1,7 @@
+<div  style="text-align:center;" >
+  <span style='color:red'>新入生をイベントに追加しよう</span>
+  <br>
+  <br>
 <%= form_tag(request.fullpath, :remote => true,:method => "post") do %>
   <%= label_tag :名前　%>
   <br>
@@ -21,6 +25,9 @@
   <%= hidden_field_tag :ajax_handler,'search' %>
   <%= submit_tag "検索" %>
 <% end %>
+<br>
+<%= link_to 'イベント詳細に戻る', event_path(params[:id]),class:"btn btn-primary", style:'color:#ffffff' %>
+</div>
 <br>
 <p id="notice"><%= notice %></p>
 <br>
