@@ -88,7 +88,7 @@ class ProfilesController < ApplicationController
   end
 
   def importance
-    @users=Profile.find_by_sql(['select * from profiles inner join checked_users on profiles.id = checked_users.checkedid']).order('id desc')
+    @users=Profile.find_by_sql(['select * from profiles inner join checked_users on profiles.id = checked_users.checkedid order by profiles.id desc'])
   end
 
   def postimportance
