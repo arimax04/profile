@@ -129,7 +129,13 @@ class ProfilesController < ApplicationController
     end
 
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find_by(id: params[:id])
+      if @profile.nil?
+      	respond_to do |format|
+      		format.html { redirect_to profiles_url, notice: 'データが未登録か消去されていて表示できません。'}
+      		format.json { head :no_content }
+      	end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -117,7 +117,13 @@ class EventsController < ApplicationController
     end
 
     def set_profile
-      @event = Eventmaster.find(params[:id])
+      @event = Eventmaster.find_by(id: params[:id])
+      if @event.nil?
+        respond_to do |format|
+          format.html { redirect_to events_url, notice: 'データが未登録か消去されていて表示できません。'}
+          format.json { head :no_content }
+        end
+      end
     end
 
     def event_params
