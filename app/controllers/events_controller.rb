@@ -93,7 +93,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       participants.each do |participant|
         if participants
-          participant.delete_all
+          participants.delete_all
           format.html { redirect_to addnewtoevent_event_path(params[:id]), notice: '登録解除しました。' }
           format.json { render :show, status: :created, location: participant }
         else
@@ -147,8 +147,8 @@ class EventsController < ApplicationController
           query.push("highschool like '%#{params[:highschool]}%'")
         end
         if !query.empty?
-          print(query)
-          @profiles = Profile.where(query.join(" or ")).order('id desc')
+          age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
+          @profiles = Profile.where(query.join(" and ")).where(created_at:age).order('id desc')
         else
           @profiles = Profile.all.order('id desc')
         end

@@ -17,6 +17,7 @@
         <td><%= profile.name %></td>
         <td><%= profile.univ %></td>
         <td><%= profile.phone %></td>
+        <td><%= link_to '詳細' , profile , class: 'btn btn-primary' ,style:'color:#ffffff' %></td>
         <td><% if @participants.include?(profile.id) %>
           <%= link_to '登録解除' , deletenewfromeventprocess_event_path(params[:id],profile.id), class: 'btn btn-warning' ,style:'color:#ffffff', method:"post" %>
         <% else %>

@@ -88,7 +88,7 @@ class ProfilesController < ApplicationController
   end
 
   def importance
-    @users=Profile.find_by_sql(['select * from profiles inner join checked_users on profiles.id = checked_users.checkedid order by profiles.id desc'])
+    @users=Profile.find_by_sql(["select * from profiles inner join checked_users on profiles.id = checked_users.checkedid where profiles.created_at >= :age and profiles.created_at < :ageplus order by profiles.id desc",{age: cookies[:age].to_s+"-01-01 00:00:00",ageplus: cookies[:age].to_s+"-12-31 23:59:59"}])
   end
 
   def postimportance
@@ -161,7 +161,7 @@ class ProfilesController < ApplicationController
         if !query.empty?
           age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
 
-          @members = Profile.where(query.join(" or ")).where(created_at:age).order('id desc')
+          @members = Profile.where(query.join(" and ")).where(created_at:age).order('id desc')
         end
       end
     end

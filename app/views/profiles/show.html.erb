@@ -46,6 +46,7 @@
 
   <br>
   <%= link_to '編集', edit_profile_path(@profile), class:"btn btn-warning" %> |
-  <%= link_to 'TOPに戻る', profiles_path, class:"btn btn-info", style:"color:white" %>
+  <%= link_to '前に戻る', request.referer, class:"btn btn-info", style:"color:white" %> |
+  <%= link_to 'TOPに行く', profiles_path, class:"btn btn-info", style:"color:white" %>
   <br>
 </div>

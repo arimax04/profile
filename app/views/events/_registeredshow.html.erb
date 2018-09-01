@@ -16,7 +16,7 @@
     <% events.each do |event| %>
       <tr class="info" style="background-color:#00CCFF;">
         <td><%= event.kindofevent %></td>
-        <td><%= event.dateofevent %></td>
+        <td><%= event.dateofevent.year %>年<%= event.dateofevent.month %>月<%= event.dateofevent.day %>日：<%= event.dateofevent.hour %>時<%= event.dateofevent.min %>分</td>
         <td><%= event.place %></td>
         <td><%= event.created_at.strftime('%Y-%m-%d %H:%M')  %></td>
         <td><%= link_to '詳細' , event_path(event) , class: 'btn btn-primary' ,style:'color:#ffffff' %></td>

@@ -1,5 +1,9 @@
 <div  style="text-align:center;" >
+  <% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+  <% else %>
   <span style='color:red'>新入生をイベントに追加しよう</span>
+  <% end %>
   <br>
   <br>
 <%= form_tag(request.fullpath, :remote => true,:method => "post") do %>
@@ -28,8 +32,6 @@
 <br>
 <%= link_to 'イベント詳細に戻る', event_path(params[:id]),class:"btn btn-primary", style:'color:#ffffff' %>
 </div>
-<br>
-<p id="notice"><%= notice %></p>
 <br>
 <div style="text-align:center;">検索結果は下に出るよ</div>
 <hr>
