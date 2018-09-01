@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @checkedids = CheckedUser.find_by(id: params[:id])
   end
 
   # GET /profiles/new
@@ -99,7 +100,7 @@ class ProfilesController < ApplicationController
           format.html { redirect_to profiles_path(@profile), notice: '新しく登録されました。' }
           format.json { render :show, status: :created, location: @profile }
         else
-          format.html { render :new }
+          format.html { redirect_to profiles_path(@profile), notice: 'すでに登録されています。'}
           format.json { render json: @profile.errors, status: :unprocessable_entity }
         end
       end

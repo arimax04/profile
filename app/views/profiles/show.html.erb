@@ -40,7 +40,12 @@
   </p>
 
   <p>
+    <% if @checkedids.blank? %>
     <%= link_to "注目人物に登録",importance_profile_path(@profile,params:{checkedid: @profile.id}), class:"btn btn-primary", style:"color:white", method: "post" %>
+    <% else %>
+    <%= button_tag "すでに登録済み",class:"btn btn-success", style:"color:white" %>
+    <% end %>
+
   </p>
 
 
