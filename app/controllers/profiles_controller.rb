@@ -111,9 +111,9 @@ class ProfilesController < ApplicationController
     user=CheckedUser.where(checkedid: params[:id])
     if user.present?
       user.delete_all
-      redirect_to "/profiles/importance", notice:"注目人物から削除されました"
+      redirect_to importance_profiles_path, notice:"注目人物から削除されました"
     else
-      redirect_to "/profiles/importance", notice:"すでに削除されたかでデータが存在しません"
+      redirect_to importance_profiles_path, notice:"すでに削除されたかでデータが存在しません"
     end
   end
 
