@@ -1,3 +1,4 @@
 class CheckedUser < ApplicationRecord
-	validates :checkedid, uniqueness: true
+	validates :profile_id, uniqueness: true
+	belongs_to :profiles, optional:true
 end

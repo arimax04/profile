@@ -5,9 +5,19 @@
 <pre>
   簡単な説明
   新規作成で新入生を登録
-  詳細画面で注目人物に登録できるよ
+  詳細画面で注目人物に登録できる
+  削除でデータを消せる
 </pre>
-
+<div style='text-align:center;'>
+<%= form_with url: select_profiles_path do |form| %>
+  <%=form.radio_button :univ, 'all' %> 全て
+  <% Settings.namesofuniv.each do |univ| %>
+    <%=form.radio_button :univ, univ %> <%=univ%>
+  <% end %>
+  <%= form.submit('選択') %>
+<% end %>
+選択中：<%= cookies[:univ]%>
+<div>
 
 
 <p id="notice"><%= notice %></p>

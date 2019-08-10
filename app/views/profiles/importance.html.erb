@@ -1,7 +1,17 @@
+<div style='text-align:center;'>
+<%= form_with url: select_profiles_path do |form| %>
+  <%=form.radio_button :univ, 'all' %> 全て
+  <% Settings.namesofuniv.each do |univ| %>
+    <%=form.radio_button :univ, univ %> <%=univ%>
+  <% end %>
+  <%= form.submit('選択') %>
+<% end %>
+選択中：<%= cookies[:univ]%>
+<div>
 <br>
 <div style="text-align:center;">
   <p id="notice"><%= notice %></p>
-  現在注目されている人達ですよ〜〜〜〜〜〜〜〜〜〜〜
+  現在注目されている人達です
 </div>
 
 <br>

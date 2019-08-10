@@ -31,7 +31,7 @@
         <td><%= link_to '編集', edit_profile_path(profile),class: 'btn btn-primary',style:'color:#ffffff' %></td>
         <td>
           <% if request.fullpath.index("importance") %>
-            <%= link_to '消去', importance_profile_path(profile.checkedid), method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %>
+            <%= link_to '注目から削除', importance_profile_path(profile.id), method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %>
           <% else %>
             <%= link_to '消去', profile, method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %>
           <% end %>

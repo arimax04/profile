@@ -1,19 +1,23 @@
 class ProfilesController < ApplicationController
   before_action :set_cookies
   before_action :set_profile, only: [:show, :edit, :update]
-
+  
   # GET /profiles
   # GET /profiles.json
   def index
 
     age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
-    @profiles = Profile.where(created_at: age).order('id desc')
+    if cookies[:univ].blank? or cookies[:univ] == 'all'
+      @profiles = Profile.where(created_at: age).order('id desc')
+    else
+      @profiles = Profile.where(created_at: age).where(univ: cookies[:univ]).order('id desc')
+    end
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @checkedids = CheckedUser.find_by(id: params[:id])
+    @checkedids = CheckedUser.find_by(profile_id: params[:id])
   end
 
   # GET /profiles/new
@@ -67,7 +71,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1.json
   def destroy
     participant=Participant.where(newcomer_id:params[:id])
-    checkeduser=CheckedUser.where(checkedid:params[:id])
+    checkeduser=CheckedUser.where(profile_id:params[:id])
     profile = Profile.where(id:params[:id])
     if participant
       participant.delete_all
@@ -89,13 +93,22 @@ class ProfilesController < ApplicationController
   end
 
   def importance
-    @users=Profile.find_by_sql(["select * from profiles inner join checked_users on profiles.id = checked_users.checkedid where profiles.created_at >= :age and profiles.created_at < :ageplus order by profiles.id desc",{age: cookies[:age].to_s+"-01-01 00:00:00",ageplus: cookies[:age].to_s+"-12-31 23:59:59"}])
+    # @users=Profile.find_by_sql(["select * from profiles inner join checked_users on profiles.id = checked_users.checkedid where profiles.created_at >= :age and profiles.created_at < :ageplus order by profiles.id desc",{age: cookies[:age].to_s+"-01-01 00:00:00",ageplus: cookies[:age].to_s+"-12-31 23:59:59"}])
+    age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
+    
+    if cookies[:univ].blank? or cookies[:univ] == 'all'
+      @users = Profile.joins(:checked_users).where(created_at: age).order('id desc')
+    else
+      @users = Profile.joins(:checked_users).where(created_at: age).where(univ: cookies[:univ]).order('id desc')
+    end
   end
 
   def postimportance
     if params[:checkedid].present?
-      userid = CheckedUser.new({checkedid: params[:checkedid]})
+      userid = CheckedUser.new({profile_id: params[:checkedid]})
       respond_to do |format|
+        print("###############")
+        print(userid)
         if userid.save
           format.html { redirect_to profiles_path(@profile), notice: '新しく登録されました。' }
           format.json { render :show, status: :created, location: @profile }
@@ -109,13 +122,21 @@ class ProfilesController < ApplicationController
   end
 
   def delete_importance
-    user=CheckedUser.where(checkedid: params[:id])
+    user=CheckedUser.where(profile_id: params[:id])
     if user.present?
       user.delete_all
       redirect_to importance_profiles_path, notice:"注目人物から削除されました"
     else
       redirect_to importance_profiles_path, notice:"すでに削除されたかでデータが存在しません"
     end
+  end
+
+  def setuniv
+    print(params)
+    if params[:univ].present?
+      cookies[:univ] = params[:univ]
+    end
+    redirect_to profiles_path
   end
 
   private
@@ -127,6 +148,8 @@ class ProfilesController < ApplicationController
       else
         cookies[:age] = Date.today.year
       end
+      print(params)
+      
     end
 
     def set_profile
@@ -158,6 +181,9 @@ class ProfilesController < ApplicationController
         end
         if params["highscool"].present?
           query.push("highschool like '%#{params[:highschool]}%'")
+        end
+        if params["supplement"].present?
+          query.push("supplement like '%#{params[:supplement]}%'")
         end
         if !query.empty?
           age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
