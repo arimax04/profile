@@ -19,12 +19,19 @@
     <%= form.radio_button :kindofevent,"公開練" ,class:"form-controll"%> 公開練
     <%= form.radio_button :kindofevent,"練習会" ,class:"form-controll"%> 練習会
     <%= form.radio_button :kindofevent,"お食事会" ,class:"form-controll"%> お食事会
+    <%= form.radio_button :kindofevent,"その他" ,class:"form-controll"%> その他
   </div>
 
   <div class="field">
-    <%= form.label :開催日 %>
+    <%= form.label :開催時間 %>
     <br>
     <%= form.datetime_select :dateofevent, use_month_numbers: true, default:Date.new(Date.today.year, Date.today.month, Date.today.day), class:"form-controll"%>
+  </div>
+
+  <div class='field'>
+    <%= form.label :終了時間 %>
+    <br>
+    <%= form.datetime_select :finishtime, use_month_numbers: true, default:Date.new(Date.today.year, Date.today.month, Date.today.day), class:"form-controll"%>
   </div>
 
   <div class="field">

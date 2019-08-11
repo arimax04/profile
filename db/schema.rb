@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_08_26_124256) do
   create_table "eventmasters", force: :cascade do |t|
     t.string "kindofevent"
     t.datetime "dateofevent"
+    t.datetime "finishtime"
     t.string "place"
     t.text "participants"
     t.text "supplement"

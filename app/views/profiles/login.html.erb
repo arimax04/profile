@@ -1,0 +1,17 @@
+<p>
+
+
+<% if flash[:notice].present?%>
+Usernameまたはパスワードが間違っています
+<% else %>
+ログインしてください
+<% end %>
+</p>
+
+<%= form_with url: login_profiles_path do |form|%>
+    Username or Email<br>
+    <%= form.text_field :user,class: "login"%><br>
+    パスワード<br>
+    <%= form.password_field :password, class:"login"%><br>
+    <%= form.submit "ログイン",class: "btn btn-primary" %>
+<% end %>

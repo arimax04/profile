@@ -3,6 +3,7 @@ class CreateEventmasters < ActiveRecord::Migration[5.2]
     create_table :eventmasters do |t|
       t.string :kindofevent
       t.datetime :dateofevent
+      t.datetime :finishtime
       t.string :place
       t.text :participants
       t.text :supplement

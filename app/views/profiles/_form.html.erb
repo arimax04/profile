@@ -26,10 +26,9 @@
   <div class="form-group">
     <%= form.label :大学名 %>
     <br>
-    <%= form.radio_button :univ,"東京大学" ,class:"form-controll"%> 東京大学
-    <%= form.radio_button :univ,"お茶の水女子大学" ,class:"form-controll"%> お茶の水女子大学
-    <%= form.radio_button :univ,"聖心女子大学" ,class:"form-controll"%> 聖心女子大学
-    <%= form.radio_button :univ,"日本女子大学" ,class:"form-controll"%> 日本女子大学
+    <% Settings.namesofuniv.each do |univ| %>
+      <%=form.radio_button :univ, univ %> <%=univ%>
+    <% end %>
   </div>
 
   <div class="form-group">

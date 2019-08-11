@@ -9,10 +9,9 @@
 <br>
 <%= label_tag :大学　%>
 <br>
-<%= radio_button_tag :univ,"東京大学" %>東京大学
-<%= radio_button_tag :univ,"お茶の水女子大学" %>お茶の水女子大学
-<%= radio_button_tag :univ,"聖心女子大学" %>聖心女子大学
-<%= radio_button_tag :univ,"日本女子大学" %>日本女子大学
+<% Settings.namesofuniv.each do |univ| %>
+    <%=radio_button_tag :univ, univ %> <%=univ%>
+<% end %>
 <br>
 <%= label_tag :出身高校　%><br>
 <%= text_field_tag :highschool %>

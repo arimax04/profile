@@ -1,0 +1,15 @@
+current directory: /Users/arimayuuichirou/MyFiles/rails/profile/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.4.4/ext/bootsnap
+/Users/arimayuuichirou/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20190811-4774-1ymfbk.rb extconf.rb
+creating Makefile
+
+current directory: /Users/arimayuuichirou/MyFiles/rails/profile/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/arimayuuichirou/MyFiles/rails/profile/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/arimayuuichirou/MyFiles/rails/profile/vendor/bundle/ruby/2.3.0/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20190811-4774-pss4db/bootsnap

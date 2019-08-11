@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   resources :profiles do
     collection do
+      get "login", action:"login"
+      post "login", action:"postlogin"
+      delete "login", action:"logout"
       post "select", action:"setuniv"
       get "search", action:"search"
       post "search", action:"search"

@@ -17,7 +17,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Eventmaster.new(event_params)
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     puts @event.dateofevent
     respond_to do |format|
       if @event.save
@@ -127,7 +126,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:eventmaster).permit(:kindofevent, :dateofevent, :place, :participants, :supplement)
+      params.require(:eventmaster).permit(:kindofevent, :dateofevent, :finishtime, :place, :participants, :supplement)
 
     end
 

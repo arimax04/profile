@@ -132,12 +132,12 @@ class ProfilesController < ApplicationController
   end
 
   def setuniv
-    print(params)
     if params[:univ].present?
       cookies[:univ] = params[:univ]
     end
     redirect_to profiles_path
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
