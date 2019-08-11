@@ -1,0 +1,28 @@
+[ N 2019-08-11 19:53:49.7598 14288/T1 age/Wat/WatchdogMain.cpp:1300 ]: Starting Passenger watchdog...
+[ N 2019-08-11 19:53:49.7719 14293/T1 age/Cor/CoreMain.cpp:1310 ]: Starting Passenger core...
+[ N 2019-08-11 19:53:49.7720 14293/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ N 2019-08-11 19:53:49.8041 14293/T1 age/Cor/CoreMain.cpp:985 ]: Passenger core online, PID 14293
+2019/08/11 19:53:51 [error] 14322#0: *4 "/var/www/app/profile/config/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+[ N 2019-08-11 19:53:53.1265 14293/T5 age/Cor/SecurityUpdateChecker.h:517 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2019-08-11 19:55:36.2506 14293/T7 age/Cor/CoreMain.cpp:641 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2019-08-11 19:55:36.2506 14293/T1 age/Cor/CoreMain.cpp:1216 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2019-08-11 19:55:36.2507 14293/Td Ser/Server.h:903 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2507 14293/Td Ser/Server.h:559 ]: [ServerThr.4] Shutdown finished
+[ N 2019-08-11 19:55:36.2508 14293/T7 Ser/Server.h:903 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2508 14293/T7 Ser/Server.h:559 ]: [ServerThr.1] Shutdown finished
+[ N 2019-08-11 19:55:36.2508 14293/Tj Ser/Server.h:903 ]: [ServerThr.7] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2508 14293/Tj Ser/Server.h:559 ]: [ServerThr.7] Shutdown finished
+[ N 2019-08-11 19:55:36.2508 14293/Tl Ser/Server.h:903 ]: [ServerThr.8] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2508 14293/Tf Ser/Server.h:903 ]: [ServerThr.5] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2509 14293/Tl Ser/Server.h:559 ]: [ServerThr.8] Shutdown finished
+[ N 2019-08-11 19:55:36.2509 14293/Th Ser/Server.h:903 ]: [ServerThr.6] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2509 14293/T9 Ser/Server.h:903 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2509 14293/Th Ser/Server.h:559 ]: [ServerThr.6] Shutdown finished
+[ N 2019-08-11 19:55:36.2509 14293/Tf Ser/Server.h:559 ]: [ServerThr.5] Shutdown finished
+[ N 2019-08-11 19:55:36.2509 14293/T9 Ser/Server.h:559 ]: [ServerThr.2] Shutdown finished
+[ N 2019-08-11 19:55:36.2509 14293/Tb Ser/Server.h:903 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2510 14293/Tn Ser/Server.h:903 ]: [ApiServer] Freed 0 spare client objects
+[ N 2019-08-11 19:55:36.2510 14293/Tb Ser/Server.h:559 ]: [ServerThr.3] Shutdown finished
+[ N 2019-08-11 19:55:36.2510 14293/Tn Ser/Server.h:559 ]: [ApiServer] Shutdown finished
+[ N 2019-08-11 19:55:36.3626 14293/T1 age/Cor/CoreMain.cpp:1295 ]: Passenger core shutdown finished
