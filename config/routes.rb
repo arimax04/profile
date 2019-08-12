@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   # scope :profiles do
   resources :events do
+    collection do
+      post "selectevent",action:"selectevent"
+    end
+
     member do
       get "addnewtoevent" => "events#addnewtoevent"
       post "addnewtoevent" => "events#addnewtoevent"

@@ -10,7 +10,7 @@
 </pre>
 <div style='text-align:center;'>
 <%= form_with url: select_profiles_path do |form| %>
-  <%=form.radio_button :univ, 'all' %> all
+  <%=form.radio_button :univ, '全て' %> 全て
   <% Settings.namesofuniv.each do |univ| %>
     <%=form.radio_button :univ, univ %> <%=univ%>
   <% end %>
@@ -20,9 +20,9 @@
 <% if cookies[:univ].present?%>
 <%= cookies[:univ]%>
 <% else %>
-all
+全て
 <%end %>
-<div>
+</div>
 
 
 <p id="notice"><%= notice %></p>

@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
   def index
 
     age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
-    if cookies[:univ].blank? or cookies[:univ] == 'all'
+    if cookies[:univ].blank? or cookies[:univ] == '全て'
       @profiles = Profile.where(created_at: age).order('id desc')
     else
       @profiles = Profile.where(created_at: age).where(univ: cookies[:univ]).order('id desc')

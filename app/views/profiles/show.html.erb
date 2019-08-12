@@ -1,10 +1,12 @@
 <div style='text-align:center;'>
   <p id="notice"><%= notice %></p>
 
+  <% if Rails.env == 'development'%>
   <p>
-  </p>
   <strong>id:</strong>
   <%= @profile.id %>
+  </p>
+  <%end%>
   <p>
     <strong>氏名:</strong>
     <%= @profile.name %>

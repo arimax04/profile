@@ -9,7 +9,23 @@
 新規作成で公開練または練習会またはお食事会のイベントが作成できるよ
 作成したイベントには詳細ボタンで新入生を登録できるよ（ただし、TOP画面で登録した新入生のみ選択できる）
 </pre>
-
+<div style='text-align:center;'>
+<%= form_with url: selectevent_events_path do |form| %>
+  <%=form.radio_button :selectedevent, '全て' %> 全て
+  <% Settings.namesofevent.each do |event| %>
+    <%=form.radio_button :selectedevent, event %> <%=event%>
+  <% end %>
+  <%= form.submit('選択') %>
+<% end %>
+選択中：
+<% if cookies[:selectedevent].present?%>
+<%= cookies[:selectedevent]%>
+<% else %>
+全て
+<%end %>
+</div>
+<br>
+<hr>
 <div style="text-align:center;">
 <%= link_to "イベント新規作成",new_event_path,class:"btn btn-primary",style:"color:#ffffff;" %>
 </div>

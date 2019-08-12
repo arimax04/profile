@@ -16,10 +16,9 @@
   <div class="field">
     <%= form.label :種類 %>
     <br>
-    <%= form.radio_button :kindofevent,"公開練" ,class:"form-controll"%> 公開練
-    <%= form.radio_button :kindofevent,"練習会" ,class:"form-controll"%> 練習会
-    <%= form.radio_button :kindofevent,"お食事会" ,class:"form-controll"%> お食事会
-    <%= form.radio_button :kindofevent,"その他" ,class:"form-controll"%> その他
+    <% Settings.namesofevent.each do |event| %>
+    <%=form.radio_button :selectedevent, event, class:"form-controll" %> <%=event%>
+    <% end %>
   </div>
 
   <div class="field">

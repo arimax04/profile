@@ -3,7 +3,13 @@ class EventsController < ApplicationController
   before_action :set_cookies
   def index
     age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
-    @events = Eventmaster.where(created_at: age).order('id desc')
+    key = :selectedevent
+    if cookies[key].blank? or cookies[key] == '全て'
+      @events = Eventmaster.where(created_at: age).order('dateofevent desc')
+    else
+      @events = Eventmaster.where(created_at: age).where(kindofevent: cookies[key]).order('dateofevent desc')
+    end
+    # @events = Eventmaster.where(created_at: age).order('dateofevent desc')
   end
   def new
     @event = Eventmaster.new
@@ -102,6 +108,13 @@ class EventsController < ApplicationController
         break
       end
     end
+  end
+
+  def selectevent
+    if params[:selectedevent].present?
+      cookies[:selectedevent] = params[:selectedevent]
+    end
+    redirect_to events_path
   end
 
   private
