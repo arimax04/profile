@@ -3,9 +3,6 @@
 
   <% if Rails.env == 'development'%>
   <p>
-  <strong>id:</strong>
-  <%= @profile.id %>
-  </p>
   <%end%>
   <p>
     <strong>氏名:</strong>
@@ -19,6 +16,11 @@
   <p>
     <strong>大学:</strong>
     <%= @profile.univ %>
+  </p>
+
+  <p>
+    <strong>誕生日:</strong>
+    <%= @profile.birthday %>
   </p>
 
   <p>

@@ -164,7 +164,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:name, :age, :univ, :station, :phone, :highschool, :supplement, :province)
+      params.require(:profile).permit(:name, :age, :univ, :birthday, :station, :phone, :highschool, :supplement, :province)
     end
 
     def search_action_with_ajax
