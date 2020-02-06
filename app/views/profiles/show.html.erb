@@ -49,7 +49,7 @@
     <% else %>
     <%= button_tag "すでに登録済み",class:"btn btn-success", style:"color:white" %>
     <% end %>
-
+    <%= link_to '消去', profile_path, method: :delete, data: { confirm: '本当に消してしますがよろしいですか？' },class:'btn btn-danger',style:'color:#ffffff' %>
   </p>
 
 
