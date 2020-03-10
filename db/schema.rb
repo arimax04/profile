@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_06_045431) do
+ActiveRecord::Schema.define(version: 2020_03_10_111033) do
 
   create_table "checked_users", force: :cascade do |t|
     t.integer "profile_id"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_02_06_045431) do
     t.datetime "updated_at", null: false
     t.string "province"
     t.string "birthday"
+    t.string "beginner"
+    t.string "email"
+    t.string "line"
+    t.string "solicitater"
+    t.string "solicitationplace"
+    t.string "personality"
+    t.string "club"
+    t.string "recommendation"
+    t.string "interest"
   end
 
 end

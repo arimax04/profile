@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get "login", action:"login"
       post "login", action:"postlogin"
       delete "login", action:"logout"
-      post "select", action:"setuniv"
+      post "select", action:"settopparam"
       get "search", action:"search"
       post "search", action:"search"
       get "importance", action:"importance"

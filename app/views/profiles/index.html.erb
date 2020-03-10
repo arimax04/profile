@@ -8,22 +8,63 @@
   詳細画面で注目人物に登録できる
   削除でデータを消せる
 </pre>
+<hr>
 <div style='text-align:center;'>
+<div>
+<h3>検索</h3>
+</div>
 <%= form_with url: select_profiles_path do |form| %>
+  <div style="border:solid;border-radius:10px;margin:10px;border-width:1px;">
+  大学：
   <%=form.radio_button :univ, '全て' %> 全て
   <% Settings.namesofuniv.each do |univ| %>
     <%=form.radio_button :univ, univ %> <%=univ%>
   <% end %>
+  </div>
+  <div style="border:solid;border-radius:10px;margin:10px;border-width:1px;">
+  <%= form.radio_button :beginner, '全て' %>全て
+  <%= form.radio_button :beginner, '初心者' %>初心者
+  <%= form.radio_button :beginner, '経験者' %>経験者
+  </div>
+  <div>
+    日にち：
+    <%= form.date_field :created_at ,class:"form-controll", value: cookies[:createdat]%>
+    <div>
+      日にちは空の時、全日程を検索する
+    </div>
+  </div>
+  <div>
   <%= form.submit('選択') %>
+  </div>
 <% end %>
-選択中：
-<% if cookies[:univ].present?%>
-<%= cookies[:univ]%>
-<% else %>
-全て
-<%end %>
+<hr>
+選択中
+<div>
+  大学：
+  <% if cookies[:univ].present?%>
+  <%= cookies[:univ]%>
+  <% else %>
+  全て
+  <%end %>
 </div>
-
+<div>
+  経験者かどうか：
+  <% if cookies[:beginner].present?%>
+  <%= cookies[:beginner]%>
+  <% else %>
+  全て
+  <%end %>
+</div>
+<div>
+  日にち：
+  <% if cookies[:createdat].present?%>
+  <%= cookies[:createdat]%>
+  <% else %>
+  全て
+  <%end %>
+</div>
+</div>
+<hr>
 
 <p id="notice"><%= notice %></p>
 <br>

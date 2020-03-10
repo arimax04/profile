@@ -12,6 +12,13 @@ class ProfilesController < ApplicationController
     else
       @profiles = Profile.where(created_at: age).where(univ: cookies[:univ]).order('id desc')
     end
+    if cookies[:beginner].present? and cookies[:beginner] != '全て'
+      @profiles = Profile.where(beginner: cookies[:beginner]).order('id desc')
+    end
+    if cookies[:createdat].present?
+      @profiles = Profile.where(created_at: cookies[:createdat].in_time_zone.all_day).order('id desc')
+    end
+
   end
 
   # GET /profiles/1
@@ -131,10 +138,13 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def setuniv
+  def settopparam
     if params[:univ].present?
       cookies[:univ] = params[:univ]
     end
+    cookies[:beginner] = params[:beginner]
+    cookies[:createdat] = params[:created_at]
+
     redirect_to profiles_path
   end
   
@@ -164,27 +174,37 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:name, :age, :univ, :birthday, :station, :phone, :highschool, :supplement, :province)
+      params.require(:profile).permit(
+        :name, 
+        :age, 
+        :univ, 
+        :birthday, 
+        :station, 
+        :phone, 
+        :highschool, 
+        :supplement, 
+        :province,
+        :beginner,
+        :email,
+        :line,
+        :solicitater,
+        :solicitationplace,
+        :personality,
+        :club,
+        :recommendation,
+        :interest)
     end
 
     def search_action_with_ajax
       if params[:ajax_handler] == 'search'
+        columns = ["name","phone","univ","highschool","supplement","beginner","province","email","line","solicitater","solicitationplace","club"]
         query = []
-        if params["name"].present?
-          query.push("name like '%#{params[:name]}%'")
+        for col in columns do
+          if params[col].present?
+            query.push(col + " like '%#{params[col]}%'")
+          end
         end
-        if params["phone"].present?
-          query.push("phone like '%#{params[:phone]}%'")
-        end
-        if params["univ"].present?
-          query.push("univ like '#{params[:univ]}'")
-        end
-        if params["highscool"].present?
-          query.push("highschool like '%#{params[:highschool]}%'")
-        end
-        if params["supplement"].present?
-          query.push("supplement like '%#{params[:supplement]}%'")
-        end
+        
         if !query.empty?
           age = (cookies[:age].to_s + "-01-01").in_time_zone.all_year
 

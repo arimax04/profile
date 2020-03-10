@@ -1,29 +1,72 @@
+<div align="center">
 <%= form_tag(search_profiles_path, :remote => true,:method => "post") do %>
-<%= label_tag :名前　%>
-<br>
-<%= text_field_tag :name %>
-<br>
-<%= label_tag :電話番号　%>
-<br>
-<%= text_field_tag :phone %>
-<br>
-<%= label_tag :大学　%>
-<br>
-<% Settings.namesofuniv.each do |univ| %>
-    <%=radio_button_tag :univ, univ %> <%=univ%>
-<% end %>
-<br>
-<%= label_tag :出身高校　%><br>
-<%= text_field_tag :highschool %>
-<br>
-<%= label_tag :補足 %><br>
+<div class="form-item">
+    <%= label_tag :名前　%>
+    <%= text_field_tag :name %>
+</div>
+<div class="form-item">
+    <%= label_tag :電話番号　%>
+    <%= text_field_tag :phone %>
+</div>
+<div class="form-item">
+    <%= label_tag :メールアドレス　%>
+    <%= text_field_tag :email %>
+</div>
+<div class="form-item">
+    <%= label_tag :lineid　%>
+    <%= text_field_tag :line %>
+</div>
+<div class="form-item">
+    <%= label_tag :大学　%>
+    <% Settings.namesofuniv.each do |univ| %>
+        <%=radio_button_tag :univ, univ %> <%=univ%>
+    <% end %>
+</div>
+<div class="form-item">
+    <%= label_tag :出身都道府県　%>
+    <%= text_field_tag :province %>
+</div>
+
+<div class="form-item">
+    <%= label_tag :出身高校　%>
+    <%= text_field_tag :highschool %>
+</div>
+<div class="form-item">
+    <%= label_tag :部活　%>
+    <%= text_field_tag :club %>
+</div>
+<div class="form-item">
+    <%= label_tag :経験者かどうか　%>
+    <%=radio_button_tag :beginner, '経験者' %>経験者
+    <%=radio_button_tag :beginner, '初心者' %>初心者
+</div>
+<div class="form-item">
+    <%= label_tag :勧誘した人　%>
+    <%= text_field_tag :solicitater %>
+</div>
+<div class="form-item">
+    <%= label_tag :勧誘した場所　%>
+    <%= text_field_tag :solicitationplace %>
+</div>
+<div class="form-item">
+<%= label_tag :補足 %>
 <%= text_field_tag :supplement %><br>
+</div>
 <%= hidden_field_tag :ajax_handler,'search' %>
 <%= submit_tag "検索" %>
 <% end %>
 <br>
 <div style="text-align:center;">検索結果は下に出るよ</div>
 <hr>
+</div>
 
 <div id="search_result">
 </div>
+
+<style>
+.form-item {
+    border: solid;
+    padding: 5px;
+    border-color: #565678;
+}
+</style>

@@ -25,7 +25,7 @@
   <div class="form-group">
     <%= form.label :誕生日 %>
     <br>
-    <%= form.date_field :birthday ,class:"form-controll"%>
+    <%= form.date_field :birthday ,class:"form-controll", value: Time.now.strftime("%Y-%m-%d")%>
   </div>
 
   <div class="form-group">
@@ -49,6 +49,18 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :メールアドレス %>
+    <br>
+    <%= form.text_field :email ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :LineID %>
+    <br>
+    <%= form.text_field :line ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
     <%= form.label :出身都道府県 %>
     <br>
     <%= form.text_field :province ,class:"form-controll"%>
@@ -58,6 +70,49 @@
     <%= form.label :出身高校 %>
     <br>
     <%= form.text_field :highschool ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :部活 %>
+    <br>
+    <%= form.text_field :club ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :経験者かどうか %>
+    <br>
+    <%=form.radio_button :beginner, "経験者", class:"form-controll" %> <%="経験者"%>
+    <%=form.radio_button :beginner, "初心者", class:"form-controll" %> <%="初心者"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :勧誘した人 %>
+    <br>
+    <%= form.text_field :solicitater ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :勧誘した場所 %>
+    <br>
+    <%= form.text_field :solicitationplace ,class:"form-controll"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :新入生の雰囲気 %>
+    <br>
+    <%= form.text_area :personality ,class:"form-controll supplement"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :何を推したか %>
+    <br>
+    <%= form.text_area :recommendation ,class:"form-controll supplement"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :何に興味を持ったか %>
+    <br>
+    <%= form.text_area :interest ,class:"form-controll supplement"%>
   </div>
 
   <div class="form-group">
